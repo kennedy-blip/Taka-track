@@ -1,0 +1,10 @@
+{
+  "name": "TakaTrack",
+  "short_name": "TakaTrack",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#071713",
+  "theme_color": "#39D98A",
+  "description": "Waste collection, subscriber billing and recycling ledger.",
+  "orientation": "portrait-primary"
+}
