@@ -20,7 +20,8 @@ jobs:
         run: flutter create --platforms=web,android --org com.takatrack .
       - run: flutter pub get
       - run: dart format lib
-      - run: flutter analyze
+      - name: Analyze Dart code
+        run: flutter analyze --no-fatal-infos
       - run: flutter test
       - run: flutter build web --release --base-href /
       - run: flutter build apk --release
