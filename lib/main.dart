@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'models/records.dart';
@@ -33,7 +32,7 @@ class _TakaTrackAppState extends State<TakaTrackApp> {
  }
  Future<void> _save() async {await store.saveSubscribers(subscribers);await store.saveBatches(batches);}
  void _status(Subscriber s,PickupStatus v){setState(()=>s.status=v);_save();}
- void _payment(Subscriber s,double amount){setState(()=>s.paid=(s.paid+amount).clamp(0,s.fee));_save();}
+ void _payment(Subscriber s,double amount){setState(()=>s.paid=(s.paid+amount).clamp(0,s.fee).toDouble());_save();}
  void _rate(Subscriber s,double amount){if(role!=UserRole.manager)return;setState(()=>s.fee=amount);_save();}
  Future<void> _addSubscriber() async {
   final name=TextEditingController(),zone=TextEditingController(),fee=TextEditingController(text:'2000');
