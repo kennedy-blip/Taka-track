@@ -12,6 +12,7 @@ Offline-first waste collection, subscriber billing and recycling ledger built in
 
 ## Run and build
 ```bash
+flutter create --platforms=web,android --org com.takatrack .
 flutter pub get
 flutter run
 flutter build web --release --base-href /
