@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/records.dart';
 class SettingsScreen extends StatelessWidget{
  const SettingsScreen({super.key,required this.role,required this.themeMode,required this.onRole,required this.onTheme,required this.count,required this.onExport});
@@ -12,5 +13,5 @@ class SettingsScreen extends StatelessWidget{
   Card(child:ListTile(leading:const Icon(Icons.android),title:const Text('Android APK centre'),subtitle:const Text('Download the latest signed release APK'),trailing:const Icon(Icons.download),onTap:()=>_download(context))),
   const Padding(padding:EdgeInsets.all(12),child:Text('TakaTrack · Offline-first field operations · KES currency',textAlign:TextAlign.center,style:TextStyle(color:Colors.grey,fontSize:11))),
  ]);
- void _download(BuildContext c){ScaffoldMessenger.of(c).showSnackBar(const SnackBar(content:Text('Open the GitHub Releases page to download TakaTrack.apk.')));}
+ Future<void> _download(BuildContext c) async {final uri=Uri.parse('https://github.com/kennedy-blip/Taka-track/releases/latest/download/app-release.apk');final ok=await launchUrl(uri,mode:LaunchMode.externalApplication);if(!ok&&c.mounted){ScaffoldMessenger.of(c).showSnackBar(const SnackBar(content:Text('Could not open the APK download. Visit the GitHub Releases page.')));}}
 }
