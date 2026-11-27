@@ -4,7 +4,7 @@ class RoutesScreen extends StatelessWidget {
  const RoutesScreen({super.key,required this.records,required this.onStatus,required this.onAdd});
  final List<Subscriber> records;final void Function(Subscriber,PickupStatus) onStatus;final VoidCallback onAdd;
  @override Widget build(BuildContext context){
-  final done=records.where((e)=>e.status==PickupStatus.collected).length;final pct=records.isEmpty?0:done/records.length;
+  final done=records.where((e)=>e.status==PickupStatus.collected).length;final double pct=records.isEmpty?0.0:done/records.length;
   return ListView(padding:const EdgeInsets.all(18),children:[
    Row(children:[Expanded(child:Text('Today’s collection run',style:Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight:FontWeight.bold))),IconButton.filledTonal(onPressed:onAdd,icon:const Icon(Icons.person_add_alt_1))]),
    Card(child:Padding(padding:const EdgeInsets.all(18),child:Column(crossAxisAlignment:CrossAxisAlignment.start,children:[const Text('ROUTE COMPLETION',style:TextStyle(fontSize:11,letterSpacing:1.4,fontWeight:FontWeight.bold,color:Colors.grey)),const SizedBox(height:10),Text('$done of ${records.length} pickups collected',style:const TextStyle(fontSize:20,fontWeight:FontWeight.bold)),const SizedBox(height:12),ClipRRect(borderRadius:BorderRadius.circular(20),child:LinearProgressIndicator(value:pct,minHeight:10)),const SizedBox(height:8),Text('${(pct*100).round()}% complete',style:const TextStyle(color:Colors.grey))]))),
